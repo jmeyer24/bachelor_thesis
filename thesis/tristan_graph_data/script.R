@@ -1,9 +1,9 @@
-setwd('D:/Documents/Studium/Kogni_Tuebingen/Bachelorarbeit/tristan_graph_data')
+setwd('D:/Documents/Studium/Kogni_Tuebingen/Bachelorarbeit/thesis/tristan_graph_data')
 
 library(igraph)
 
-dat_vertices <- read.table('graph_vertices.vim',header=TRUE)
-dat_edges <- read.table('graph_edges.vim',header=TRUE)
+dat_vertices <- read.table('small_graph_vertices.txt',header=TRUE)
+dat_edges <- read.table('small_graph_edges.txt',header=TRUE)
 #dat <- read.graph('graph.vim')
 
 small_graph <- graph_from_data_frame(head(dat_edges[1:2]))

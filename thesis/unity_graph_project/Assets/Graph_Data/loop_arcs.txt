@@ -1,5 +1,0 @@
-from	to	label	distance	angle	
-1	2	0	1	3.1
-2	3	1	1	3.1
-3	4	2	1	3.1
-4	1	3	1	3.1
