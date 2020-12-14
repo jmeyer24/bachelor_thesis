@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Building material from graph data</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S9 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S10 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Building material from graph data</span></h1><div  class = 'S1'><span>This script builds the material for a given tuple of graph data files, namely the nodes and edges files. From this we can either generate embeddings to minimize an objective function that assigns a certain value to a graph as rating or visualize the interconnections of the graph by means of the adjacency matrix.</span></div><h2  class = 'S2'><span>Preparations</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>addpath(</span><span style="color: rgb(170, 4, 249);">"..\tristan_graph_data"</span><span>)</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>format </span><span style="color: rgb(170, 4, 249);">shortG</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>pfn = </span><span style="color: rgb(170, 4, 249);">"small_graph_nodes.txt"</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>pfe = </span><span style="color: rgb(170, 4, 249);">"small_graph_edges.txt"</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% pfn = "large_graph_nodes.txt";</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% pfe = "large_graph_edges.txt";</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div></div><div  class = 'S6'><span>Interestingely enough we got nodes with labels 0 to 1371, whereas the node with label 0 does not matter in a way other than initialize the graph as it gets build by Tristan's algorithm. So in the small graph data we do not have n = 1372 nodes but n = 1371. This is reflected in the edges data in the way that their labels only go from 1 to 1371.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>nodes = read(pfn);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>nodes(1,:) = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>edges = read(pfe);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>edges = edges(:,[3 1 2 4 5]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>clear </span><span style="color: rgb(170, 4, 249);">pfn pfe</span></span></div></div></div><div  class = 'S6'><span>The variable </span><span style=' font-weight: bold;'>n </span><span>describes the number of nodes in the graph. Here we go for one node for each line in our nodes graph data. In future works we might want to cluster nodes or merge the ones that initialy lie on the same spatial coordinates.</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>n = size(nodes,1)</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="057C658F" data-scroll-top="null" data-scroll-left="null" data-width="1296" data-height="34" data-hashorizontaloverflow="false" data-testid="output_0" style="max-height: 261px; width: 1325px;"><div class="textElement"><div><span class="variableNameElement">n = </span></div><div>        1371
+</div></div></div></div></div></div><h2  class = 'S9'><span>Build M </span></h2><div  class = 'S1'><span>We call here </span><span style=' font-weight: bold;'>buildM()</span><span> which does only intake the number of nodes </span><span style=' font-weight: bold;'>n</span><span>. As an additional notion we get from it the time it requires to build this matrix. </span><span style=' font-style: italic;'>(see buildM.m)</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>M = buildM(n);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="702BAB0A" data-scroll-top="null" data-scroll-left="null" data-width="1296" data-height="31" data-hashorizontaloverflow="false" data-testid="output_1" style="max-height: 261px; width: 1325px;"><div class="textElement">building M...
+Elapsed time is 0.041315 seconds.</div></div></div></div></div><h2  class = 'S9'><span>Build A, Cos and Sin</span></h2><div  class = 'S1'><span>All three of these matrices have size </span><span style=' font-weight: bold;'>nxn</span><span>. The adjacency matrix </span><span style=' font-weight: bold;'>A </span><span>is not really necessary to keep track of, as </span><span style=' font-weight: bold;'>Cos </span><span>and </span><span style=' font-weight: bold;'>Sin </span><span>are basically an extansion of </span><span style=' font-weight: bold;'>A</span><span>, e.g. they got the same structure. The expanded two matrices are calculated by the angle of each connection edge from which we ultimately are constructing a matrix </span><span style=' font-weight: bold;'>P</span><span> of size </span><span style=' font-weight: bold;'>nx2</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>A = sparse(edges(:,2),edges(:,3),1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>Cos = sparse(edges(:,2),edges(:,3),cos(edges(:,5)));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>Sin = sparse(edges(:,2),edges(:,3),sin(edges(:,5)));</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div></div><h2  class = 'S9'><span>Build P</span></h2><div  class = 'S1'><span>Here we now use the previously build matrices to extract the matrix of unit vectors </span><span style=' font-weight: bold;'>P</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>P = buildP(n,Cos,Sin);</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="784ED2DA" data-scroll-top="null" data-scroll-left="null" data-width="1296" data-height="31" data-hashorizontaloverflow="false" data-testid="output_2" style="max-height: 261px; width: 1325px;"><div class="textElement">building P...
+Elapsed time is 0.008438 seconds.</div></div></div></div></div><h2  class = 'S9'><span>Least square solution</span></h2><div  class = 'S1'><span>Before we calculate our desired least square solution for the embedding of nodes we first quickly check if the dimensions of the relevant matrices </span><span style=' font-weight: bold;'>M </span><span>and </span><span style=' font-weight: bold;'>P </span><span>are correct:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S7'><span style="white-space: pre;"><span>mat2str(size(P) == [n*(n-1) 2])</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="056AB161" data-scroll-top="null" data-scroll-left="null" data-width="1296" data-height="20" data-hashorizontaloverflow="false" data-testid="output_3" style="max-height: 261px; width: 1325px;"><div class="textElement"><div><span class="variableNameElement">ans = </span>'[true true]'</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S10'><span style="white-space: pre;"><span>mat2str(size(M) == [n*(n-1) n])</span></span></div><div  class = 'S8'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="8F91BCED" data-scroll-top="null" data-scroll-left="null" data-width="1296" data-height="20" data-hashorizontaloverflow="false" data-testid="output_4" style="max-height: 261px; width: 1325px;"><div class="textElement"><div><span class="variableNameElement">ans = </span>'[true true]'</div></div></div></div></div></div><div  class = 'S6'><span>Now we calculate the final least square solution from the given formula. </span><span style=' font-style: italic;'>(see unwrapping.pdf)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>emb1 = </span><span class="warning_squiggle_rte1623421582">inv</span><span>(M'*M)*(M'*P);</span></span></div></div></div><div  class = 'S6'><span>The literal use of </span><span style=' font-weight: bold;'>inv()</span><span> is not recommended by matlab. Instead </span><span style=' font-weight: bold;'>A\b</span><span> is suggested. It is the "matrix left division" for solving linear systems </span><span style=' font-style: italic;'>(see inv() details)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>emb2 = (M'*M)\(M'*P); </span></span></div></div></div><h2  class = 'S9'><span>Aftermath</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>clearvars </span><span style="color: rgb(170, 4, 249);">-except edges M n nodes P Sin Cos emb1 emb2</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>save </span><span style="color: rgb(170, 4, 249);">materials\building.mat</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Building material from graph data
+% This script builds the material for a given tuple of graph data files, namely 
+% the nodes and edges files. From this we can either generate embeddings to minimize 
+% an objective function that assigns a certain value to a graph as rating or visualize 
+% the interconnections of the graph by means of the adjacency matrix.
+%% Preparations
+
+addpath("..\tristan_graph_data")
+format shortG
+
+pfn = "small_graph_nodes.txt";
+pfe = "small_graph_edges.txt";
+% pfn = "large_graph_nodes.txt";
+% pfe = "large_graph_edges.txt";
+
+%% 
+% Interestingely enough we got nodes with labels 0 to 1371, whereas the node 
+% with label 0 does not matter in a way other than initialize the graph as it 
+% gets build by Tristan's algorithm. So in the small graph data we do not have 
+% n = 1372 nodes but n = 1371. This is reflected in the edges data in the way 
+% that their labels only go from 1 to 1371.
+
+nodes = read(pfn);
+nodes(1,:) = [];
+edges = read(pfe);
+edges = edges(:,[3 1 2 4 5]);
+
+clear pfn pfe
+%% 
+% The variable *n* describes the number of nodes in the graph. Here we go for 
+% one node for each line in our nodes graph data. In future works we might want 
+% to cluster nodes or merge the ones that initialy lie on the same spatial coordinates.
+
+n = size(nodes,1)
+%% Build M 
+% We call here *buildM()* which does only intake the number of nodes *n*. As 
+% an additional notion we get from it the time it requires to build this matrix. 
+% _(see buildM.m)_
+
+M = buildM(n);
+%% Build A, Cos and Sin
+% All three of these matrices have size *nxn*. The adjacency matrix *A* is not 
+% really necessary to keep track of, as *Cos* and *Sin* are basically an extansion 
+% of *A*, e.g. they got the same structure. The expanded two matrices are calculated 
+% by the angle of each connection edge from which we ultimately are constructing 
+% a matrix *P* of size *nx2*.
+
+A = sparse(edges(:,2),edges(:,3),1);
+Cos = sparse(edges(:,2),edges(:,3),cos(edges(:,5)));
+Sin = sparse(edges(:,2),edges(:,3),sin(edges(:,5)));
+
+%% Build P
+% Here we now use the previously build matrices to extract the matrix of unit 
+% vectors *P*.
+
+P = buildP(n,Cos,Sin);
+%% Least square solution
+% Before we calculate our desired least square solution for the embedding of 
+% nodes we first quickly check if the dimensions of the relevant matrices *M* 
+% and *P* are correct:
+
+mat2str(size(P) == [n*(n-1) 2])
+mat2str(size(M) == [n*(n-1) n])
+%% 
+% Now we calculate the final least square solution from the given formula. _(see 
+% unwrapping.pdf)_
+
+emb1 = inv(M'*M)*(M'*P);
+%% 
+% The literal use of *inv()* is not recommended by matlab. Instead *A\b* is 
+% suggested. It is the "matrix left division" for solving linear systems _(see 
+% inv() details)_
+
+emb2 = (M'*M)\(M'*P); 
+%% Aftermath
+
+clearvars -except edges M n nodes P Sin Cos emb1 emb2
+save materials\building.mat
+##### SOURCE END #####
+--></body></html>
