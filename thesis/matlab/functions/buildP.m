@@ -1,3 +1,4 @@
+% create the P matrix, the multiple of M and the current embedding
 function P = buildP(n,Cos,Sin)
     fprintf("\nbuilding P...\n");
 %     count = 0;

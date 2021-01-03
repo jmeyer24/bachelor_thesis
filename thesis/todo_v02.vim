@@ -4,7 +4,7 @@ vergleichen mit geclusterten graphen
 
 übereinanderliegende punkte mitteln -> 1/30 größe des original graphen
 
-circulares mittel von den 30 punkten
+circulares mittel von den 30 punkten für das bearing mitteln
 
 
 cluster beeinflussen bewegung/rotation der punkte
@@ -17,9 +17,10 @@ punkte auf gleicher position zusammenfassen!
 
 
 wirklich verstehen was die graphen geben!!!
+visualisierung von farbgradienten
 
 
-in arbeit
+in bachelorarbeit schreiben über
 abstract algorithmus
 beispielgraphen
 -> auf großen graphen anwenden

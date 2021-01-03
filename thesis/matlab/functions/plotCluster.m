@@ -1,3 +1,4 @@
+% plots the data in a cluster either by means of 'dbscan' or 'kmeans'
 function plotCluster(dat,epsilon,minpts,legend,showlabels,type) 
     if type == "db"
         idx = dbscan(dat(:,2:3),epsilon,minpts);
@@ -5,11 +6,11 @@ function plotCluster(dat,epsilon,minpts,legend,showlabels,type)
         idx = kmeans(dat(:,2:3),minpts);
     end
     
-    numcl = size(unique(idx),1)
+    numcl = size(unique(idx),1);
     clpos = zeros(numcl,2);
     labels = string(1:numcl);
         
-    gscatter(dat(:,2),dat(:,3),idx,'','x',minpts,legend)
+    gscatter(dat(:,2),dat(:,3),idx,'','x',5,legend)
     hold on
     
     for i = 1:numcl
