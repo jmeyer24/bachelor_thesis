@@ -1,6 +1,5 @@
 % calculates the Objective Function with normalization of the difference
-function cof = ObjFN(embedding)
-    load materials\building.mat edges
+function cof = ObjFN(embedding,edges)
     cof = 0;
 
     for row = 1:size(edges,1)

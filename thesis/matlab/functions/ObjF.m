@@ -1,6 +1,5 @@
 % calculates the Objective Function
-function cof = ObjF(embedding)
-    load materials\building.mat edges
+function cof = ObjF(emb,edges)
     cof = 0;
 
     for row = 1:size(edges,1)
@@ -9,7 +8,7 @@ function cof = ObjF(embedding)
         to_ind = edge(3);
         angle = edge(5);
 
-        x_diff = embedding(to_ind,:)-embedding(from_ind,:);
+        x_diff = emb(to_ind,:)-emb(from_ind,:);
         x_unitvec = [cos(angle) sin(angle)];
 
         vec_ij = x_diff - x_unitvec;
