@@ -1,5 +1,5 @@
 % adds to an existing graph a number of points from the given matrix
-function plotcolorgradient(numPoints,col1,col2,datapoints,showLines,plotalldata)
+function plotColorgradient(numPoints,col1,col2,datapoints,showLines,plotalldata)
     color_gradient = [linspace(col1(1),col2(1),numPoints)',linspace(col1(2),col2(2),numPoints)',linspace(col1(3),col2(3),numPoints)'];
     point_gradient = round(linspace(1,size(datapoints,1),numPoints));
     

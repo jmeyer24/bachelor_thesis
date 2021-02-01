@@ -1,7 +1,7 @@
 %BUILD Summary of this function goes here
 %   Detailed explanation goes here
-function [emb,M,P,Sin,Cos] = build(pathNodes,pathEdges)
-    [~,edges,n] = merg(pathNodes,pathEdges);
+function [nodes,edges,n,emb,M,P,Sin,Cos] = build(pathData)
+    [nodes,edges,n] = merg(pathData);
 
     M = buildM(n);
     
@@ -16,7 +16,6 @@ function [emb,M,P,Sin,Cos] = build(pathNodes,pathEdges)
 %     emb1 = inv(M'*M)*(M'*P);
     emb = (M'*M)\(M'*P);
     
-    clearvars -except emb M P Sin Cos
-    save materials\last_build.mat
+    save(append("materials\",pathData,".mat"))
 end
 

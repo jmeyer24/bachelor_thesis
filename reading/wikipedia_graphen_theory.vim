@@ -235,6 +235,11 @@ https://en.wikipedia.org/wiki/Spectral_graph_theory
 könnte interessant sein, nochmal anschauen und die eigenschaften durch
 flaschenhals (bottleneck, ungleichung von ...) betrachten
 
+wenn ich es gerade richtig verstehe, kann man aus dem spektrum eines graphen,
+welche eine nach größe geordnete liste der eigenwerte der adjazenzmatrix eines
+graphen ist, einen graphen über z.B. Hall's Algorithmus (suchen!) generieren
+-> siehe Beispiele auf wikipedia
+
 --
 
 http://hduongtrong.github.io/2016/02/10/Spectral-Clustering/
@@ -255,6 +260,15 @@ bevorzugen ist (durch clustering, bottleneck etc)
 https://de.wikipedia.org/wiki/Graphentheorie#Teilgebiete_der_Graphentheorie
 https://de.wikipedia.org/wiki/Matching_(Graphentheorie)
 https://de.wikipedia.org/wiki/Faktor_(Graphentheorie)
+https://en.wikipedia.org/wiki/Graph_automorphism#Graph_families_defined_by_their_automorphisms
 
 https://www.youtube.com/watch?v=82zlRaRUsaY&ab_channel=SystemsInnovation
 https://en.wikipedia.org/wiki/Graph_theory
+
+https://en.wikipedia.org/wiki/Graph_automorphism#Graph_families_defined_by_their_automorphisms
+https://mathworld.wolfram.com/topics/GraphTheory.html
+https://mathworld.wolfram.com/GraphSpectrum.html
+
+TODO:
+verbinde die spektrale untersuchung der adjazenzmatrix mit dem winkelfehler
+zwischen den beiden verbindungen bzw den referenz-nord-richtung unseres graphen

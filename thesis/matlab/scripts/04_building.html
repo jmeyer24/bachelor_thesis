@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Building material from graph data</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S2 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0.994318px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0.994318px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S6 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0.994318px solid rgb(233, 233, 233); border-bottom: 0.994318px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S8 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0.994318px solid rgb(233, 233, 233); border-bottom: 0.994318px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { border-left: 0.994318px solid rgb(233, 233, 233); border-right: 0.994318px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0.994318px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.variableValue { width: 100% !important; }
+.embeddedOutputsMatrixElement,.eoOutputWrapper .matrixElement {min-height: 18px; box-sizing: border-box;}
+.embeddedOutputsMatrixElement .matrixElement,.eoOutputWrapper .matrixElement,.rtcDataTipElement .matrixElement {position: relative;}
+.matrixElement .variableValue,.rtcDataTipElement .matrixElement .variableValue {white-space: pre; display: inline-block; vertical-align: top; overflow: hidden;}
+.embeddedOutputsMatrixElement.inlineElement {}
+.embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {display: none;}
+.embeddedOutputsMatrixElement.inlineElement .veTable .body {padding-top: 0 !important; max-height: 100px;}
+.inlineElement .matrixElement {max-height: 300px;}
+.embeddedOutputsMatrixElement.rightPaneElement {}
+.rightPaneElement .matrixElement,.rtcDataTipElement .matrixElement {overflow: hidden; padding-left: 9px;}
+.rightPaneElement .matrixElement {margin-bottom: -1px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer,.eoOutputWrapper .matrixElement .valueContainer,.rtcDataTipElement .matrixElement .valueContainer {white-space: nowrap; margin-bottom: 3px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis.hide,.embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis.hide,.eoOutputWrapper .matrixElement .verticalEllipsis.hide,.rtcDataTipElement .matrixElement .valueContainer .horizontalEllipsis.hide,.rtcDataTipElement .matrixElement .verticalEllipsis.hide {display: none;}
+.embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .verticalEllipsis, .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .horizontalEllipsis {display:none;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis {margin-bottom: -3px;}
+.eoOutputWrapper .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer {cursor: default !important;}
+.embeddedOutputsVariableElement {white-space: pre-wrap; word-wrap: break-word; min-height: 18px; max-height: 250px; overflow: auto;}
+.variableElement {}
+.embeddedOutputsVariableElement.inlineElement {}
+.inlineElement .variableElement {}
+.embeddedOutputsVariableElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .variableElement {padding-top: 2px; padding-left: 9px;}
+.variableNameElement {margin-bottom: 3px; display: inline-block;}
+.matrixElement .horizontalEllipsis,.rtcDataTipElement .matrixElement .horizontalEllipsis {display: inline-block; margin-top: 3px; width: 30px; height: 12px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAJCAYAAADO1CeCAAAAJUlEQVR42mP4//8/A70xw0i29BUDFPxnAEtTW37wWDqakIa4pQDvOOG89lHX2gAAAABJRU5ErkJggg==");}
+.matrixElement .verticalEllipsis,.textElement .verticalEllipsis,.rtcDataTipElement .matrixElement .verticalEllipsis,.rtcDataTipElement .textElement .verticalEllipsis {margin-left: 35px; width: 12px; height: 30px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAZCAYAAAAIcL+IAAAALklEQVR42mP4//8/AzGYgWyFMECMwv8QddRS+P//KyimlmcGUOFoOI6GI/UVAgDnd8Dd4+NCwgAAAABJRU5ErkJggg==");}</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Building material from graph data</span></h1><div  class = 'S1'><span>This script builds the material matrices for a given tuple of graph data files, namely the nodes and edges files. We get these after running the </span><span style=' font-weight: bold;'>merg() </span><span>function. </span></div><div  class = 'S1'><span>From these matrices we can either generate embeddings to minimize an objective function that assigns a certain value to a graph as rating or visualize the interconnections of the graph by means of the adjacency matrix.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>pathNodes = </span><span style="color: rgb(170, 4, 249);">"data\small_graph_nodes.txt"</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>pathEdges = </span><span style="color: rgb(170, 4, 249);">"data\small_graph_edges.txt"</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>[nodes,edges,n] = merg(pathNodes,pathEdges);</span></span></div></div></div><h2  class = 'S5'><span>Build M </span></h2><div  class = 'S1'><span>We call here </span><span style=' font-weight: bold;'>buildM()</span><span> which does only intake the number of nodes </span><span style=' font-weight: bold;'>n</span><span>. As an additional notion we get from it the time it requires to build this matrix. </span><span style=' font-style: italic;'>(see buildM.m)</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>M = buildM(n);</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="0A7C4A63" data-scroll-top="null" data-scroll-left="null" data-width="961" data-height="32" data-hashorizontaloverflow="false" data-testid="output_0" style="max-height: 261px; width: 991.026px;"><div class="textElement">building M...
+Elapsed time is 0.000844 seconds.</div></div></div></div></div><h2  class = 'S5'><span>Build A, Cos and Sin</span></h2><div  class = 'S1'><span>All three of these matrices have size </span><span style=' font-weight: bold;'>nxn</span><span>. The adjacency matrix </span><span style=' font-weight: bold;'>A </span><span>is not really necessary to keep track of, as </span><span style=' font-weight: bold;'>Cos </span><span>and </span><span style=' font-weight: bold;'>Sin </span><span>are basically an expansion of </span><span style=' font-weight: bold;'>A</span><span>, e.g. they got the same structure. </span></div><div  class = 'S1'><span>The expanded two matrices are calculated by the angle of each connection edge from which we ultimately are constructing a matrix </span><span style=' font-weight: bold;'>P</span><span> of size </span><span style=' font-weight: bold;'>nx2</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>A = sparse(edges(:,2),edges(:,3),1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>Cos = sparse(edges(:,2),edges(:,3),cos(edges(:,5)));</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>Sin = sparse(edges(:,2),edges(:,3),sin(edges(:,5)));</span></span></div></div></div><h2  class = 'S5'><span>Build P</span></h2><div  class = 'S1'><span>Here we now use the previously build matrices to extract the matrix of unit vectors </span><span style=' font-weight: bold;'>P</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>P = buildP(n,Cos,Sin);</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="73F8A59D" data-scroll-top="null" data-scroll-left="null" data-width="961" data-height="32" data-hashorizontaloverflow="false" data-testid="output_1" style="max-height: 261px; width: 991.026px;"><div class="textElement">building P...
+Elapsed time is 0.000306 seconds.</div></div></div></div></div><h2  class = 'S5'><span>Least square solution</span></h2><div  class = 'S1'><span>Before we calculate our desired least square solution for the embedding of nodes we first quickly check if the dimensions of the relevant matrices </span><span style=' font-weight: bold;'>M </span><span>and </span><span style=' font-weight: bold;'>P </span><span>are correct:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>mat2str(size(P) == [n*(n-1) 2])</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="B44DB7E2" data-scroll-top="null" data-scroll-left="null" data-width="961" data-height="21" data-hashorizontaloverflow="false" data-testid="output_2" style="max-height: 261px; width: 991.026px;"><div class="textElement"><div><span class="variableNameElement">ans = </span>'[true true]'</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>mat2str(size(M) == [n*(n-1) n])</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="101C11B2" data-scroll-top="null" data-scroll-left="null" data-width="961" data-height="21" data-hashorizontaloverflow="false" data-testid="output_3" style="max-height: 261px; width: 991.026px;"><div class="textElement"><div><span class="variableNameElement">ans = </span>'[true true]'</div></div></div></div></div></div><div  class = 'S1'><span>If we check for singularity, we see that the matrix </span><span style=' font-weight: bold;'>M'xM </span><span>is indeed singular. </span></div><div  class = 'S1'><span style=' font-weight: bold;'>svd()</span><span> gives us a list of singular values. Important to check singularity from this function is the difference of the maximal and minimal singular values </span><span style=' font-style: italic;'>(see </span><a href = "https://stackoverflow.com/questions/13145948/how-to-find-out-if-a-matrix-is-singular"><span>https://stackoverflow.com/questions/13145948/how-to-find-out-if-a-matrix-is-singular</span></a><span>)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>cM = full(M'*M);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S9'><span style="white-space: pre;"><span class="warning_squiggle_rte1497988893">ma</span><span> = max(svd(cM))</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ma = 100.0000</div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span class="warning_squiggle_rte1497988893">mi</span><span> = min(svd(cM))</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>mi = 8.4157e-15</div></div></div></div><div  class = 'S10'><span>As another way we might check the conditions numbers with </span><span style=' font-weight: bold;'>cond()</span><span>. Numbers close to </span><span style=' font-weight: bold;'>1 </span><span>speak for 'better behaved' matrices. </span><span style=' font-style: italic;'>(see </span><a href = "https://de.mathworks.com/matlabcentral/answers/466525-singular-matrix-and-matlab-inversion"><span>https://de.mathworks.com/matlabcentral/answers/466525-singular-matrix-and-matlab-inversion</span></a><span style=' font-style: italic;'>)</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte1497988893">co</span><span> = cond(cM)</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>co = 1.1883e+16</div></div></div></div><div  class = 'S10'><span>As to this we delete </span><span style=' font-weight: bold;'>x_1</span><span> (as it is fixed to position (0,0)), which corresponds to the first </span><span style=' font-weight: bold;'>n-1</span><span> elements in </span><span style=' font-weight: bold;'>M </span><span>and </span><span style=' font-weight: bold;'>P</span><span>, and check again.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>M(1:(n-1),:) = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>P(1:(n-1),:) = [];</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>cM = full(M'*M);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S9'><span style="white-space: pre;"><span>ma = max(svd(cM))</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ma = 99.0000</div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>mi = min(svd(cM))</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>mi = 8.7297e-15</div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>co = cond(cM)</span></span></div><div  class = 'S7'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>co = 1.1341e+16</div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>size(M)</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableMatrixElement" uid="398B4383" data-scroll-top="null" data-scroll-left="null" data-width="961" data-testid="output_10" style="width: 991.026px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="matrixElement veSpecifier saveLoad" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="veVariableName variableNameElement double" style="width: 961px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="headerElementClickToInteract" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><span style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">ans = </span><span class="veVariableValueSummary veMetaSummary" style="white-space: normal; font-style: normal; color: rgb(179, 179, 179); font-size: 12px;">1×2</span></div></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:80,&quot;totalColumns&quot;:&quot;2&quot;,&quot;totalRows&quot;:&quot;1&quot;,&quot;charsPerColumn&quot;:12}" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="variableValue" style="width: 162px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">        2401          50
+</div><div class="horizontalEllipsis hide" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div><div class="verticalEllipsis hide" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div></div></div></div></div></div></div><div  class = 'S10'><span>TODO: no singularity, but no warning from matlab?!</span></div><div  class = 'S1'><span>Now we calculate the final least square solution from the given formula. </span><span style=' font-style: italic;'>(see unwrapping.pdf).</span></div><div  class = 'S1'><span>The literal use of </span><span style=' font-weight: bold;'>inv()</span><span> is not recommended by matlab. Instead </span><span style=' font-weight: bold;'>A\b</span><span> is suggested. It is the "matrix left division" for solving linear systems </span><span style=' font-style: italic;'>(see inv() details).</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(2, 128, 9);">% emb1 = inv(M'*M)*(M'*P);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>emb = (M'*M)\(M'*P); </span></span></div></div></div><h2  class = 'S5'><span>Aftermath</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>clc</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>clearvars </span><span style="color: rgb(170, 4, 249);">-except emb M P Sin Cos</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>save </span><span style="color: rgb(170, 4, 249);">materials\built.mat</span></span></div></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Building material from graph data
+% This script builds the material matrices for a given tuple of graph data files, 
+% namely the nodes and edges files. We get these after running the *merg()* function. 
+% 
+% From these matrices we can either generate embeddings to minimize an objective 
+% function that assigns a certain value to a graph as rating or visualize the 
+% interconnections of the graph by means of the adjacency matrix.
+
+pathNodes = "data\small_graph_nodes.txt";
+pathEdges = "data\small_graph_edges.txt";
+[nodes,edges,n] = merg(pathNodes,pathEdges);
+%% Build M 
+% We call here *buildM()* which does only intake the number of nodes *n*. As 
+% an additional notion we get from it the time it requires to build this matrix. 
+% _(see buildM.m)_
+
+M = buildM(n);
+%% Build A, Cos and Sin
+% All three of these matrices have size *nxn*. The adjacency matrix *A* is not 
+% really necessary to keep track of, as *Cos* and *Sin* are basically an expansion 
+% of *A*, e.g. they got the same structure. 
+% 
+% The expanded two matrices are calculated by the angle of each connection edge 
+% from which we ultimately are constructing a matrix *P* of size *nx2*.
+
+A = sparse(edges(:,2),edges(:,3),1);
+Cos = sparse(edges(:,2),edges(:,3),cos(edges(:,5)));
+Sin = sparse(edges(:,2),edges(:,3),sin(edges(:,5)));
+%% Build P
+% Here we now use the previously build matrices to extract the matrix of unit 
+% vectors *P*.
+
+P = buildP(n,Cos,Sin);
+%% Least square solution
+% Before we calculate our desired least square solution for the embedding of 
+% nodes we first quickly check if the dimensions of the relevant matrices *M* 
+% and *P* are correct:
+
+mat2str(size(P) == [n*(n-1) 2])
+mat2str(size(M) == [n*(n-1) n])
+%% 
+% If we check for singularity, we see that the matrix *M'xM* is indeed singular. 
+% 
+% *svd()* gives us a list of singular values. Important to check singularity 
+% from this function is the difference of the maximal and minimal singular values 
+% _(see_ <https://stackoverflow.com/questions/13145948/how-to-find-out-if-a-matrix-is-singular 
+% https://stackoverflow.com/questions/13145948/how-to-find-out-if-a-matrix-is-singular>)
+
+cM = full(M'*M);
+ma = max(svd(cM))
+mi = min(svd(cM))
+%% 
+% As another way we might check the conditions numbers with *cond()*. Numbers 
+% close to *1* speak for 'better behaved' matrices. _(see_ <https://de.mathworks.com/matlabcentral/answers/466525-singular-matrix-and-matlab-inversion 
+% https://de.mathworks.com/matlabcentral/answers/466525-singular-matrix-and-matlab-inversion>_)_
+
+co = cond(cM)
+%% 
+% As to this we delete *x_1* (as it is fixed to position (0,0)), which corresponds 
+% to the first *n-1* elements in *M* and *P*, and check again.
+
+M(1:(n-1),:) = [];
+P(1:(n-1),:) = [];
+cM = full(M'*M);
+ma = max(svd(cM))
+mi = min(svd(cM))
+co = cond(cM)
+size(M)
+%% 
+% TODO: no singularity, but no warning from matlab?!
+%% 
+% Now we calculate the final least square solution from the given formula. _(see 
+% unwrapping.pdf)._
+% 
+% The literal use of *inv()* is not recommended by matlab. Instead *A\b* is 
+% suggested. It is the "matrix left division" for solving linear systems _(see 
+% inv() details)._
+
+% emb1 = inv(M'*M)*(M'*P);
+emb = (M'*M)\(M'*P); 
+%% Aftermath
+
+clc
+clearvars -except emb M P Sin Cos
+save materials\built.mat
+##### SOURCE END #####
+--></body></html>
