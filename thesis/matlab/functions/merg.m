@@ -1,12 +1,15 @@
 % see 'merging.mlx'
 % takes nodes and edges files and merges stacked nodes to one
-function [nodes,edges,n] = merg(pathData)
+function [nodes,edges,n,timeMerg] = merg(pathData)
     addpath("CircStat2012a")
 
     [nodes,edges] = readBoth(pathData);
     
     all_nodes = nodes;
-
+    
+    fprintf("\nmerging...\n");
+    tic
+    
     [~,IA,~] = unique(nodes(:,[2 3]),'rows','stable');
     nodes = nodes(IA,:);  % these nodes are the representatives
     n = size(nodes,1);
@@ -43,6 +46,8 @@ function [nodes,edges,n] = merg(pathData)
     end
     nodes(end,4) = circ_mean(all_nodes(IA(n):end,4));
 
-    clearvars -except nodes edges n
+    timeMerg = toc;
+    toc
+    clearvars -except nodes edges n timeMerg
 end
 

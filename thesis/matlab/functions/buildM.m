@@ -1,5 +1,5 @@
 %builds the M matrix e.g. -1 vector moving through unit matrices
-function M = buildM(n)
+function [M,timeM] = buildM(n)
 %     m = [repelem(-1,n-1)' speye(n-1)]; % first block of M
 %     [I,J,V] = find(m);
     fprintf("\nbuilding M...\n");
@@ -38,11 +38,12 @@ function M = buildM(n)
 %         V = [V;v];
 %     end
 %     fprintf(repmat('\b',1,count),"\n");
+    timeM = toc;
     toc
 
     % M = zeros(n*(n-1),n);
     % this would be a 19.2GB matrix for n = 1371 XD... 
     % this isnt even the final form of the matrix
     M = sparse(I,J,V);
-    clearvars -except M
+    clearvars -except M timeM
 end

@@ -1,5 +1,5 @@
 % create the P matrix, e.g. a list of vectors on the unit circle
-function P = buildP(n,Cos,Sin)
+function [P,timeP] = buildP(n,Cos,Sin)
     fprintf("\nbuilding P...\n");
     tic
     
@@ -11,5 +11,7 @@ function P = buildP(n,Cos,Sin)
     % remove same index (p_ii)
     P(1:n-1:n*(n-1),:) = [];
     
+    timeP = toc;
     toc
+    clearvars -except P timeP
 end

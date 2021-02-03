@@ -1,21 +1,30 @@
-function plotData(pathData,drawEmbedding,drawOV,drawNodes,drawLabel,drawNorth,drawConnections,drawNormalized,drawDifference,drawEndLabel)
+function plotData(pathData,rereadData,drawEmbedding,drawOV,drawNodes,drawLabel,drawNorth,drawConnections,drawNormalized,drawDifference,drawEndLabel)
     matPath = append("materials\",pathData,".mat");
     
-    if drawEmbedding 
-        try
-            load(matPath,"nodes","edges","emb");
-        catch
+    % draw either the embedding or the given (in the files) data
+    % you can choose to check for precalculated .mat files
+    if drawEmbedding
+        if rereadData
             [nodes,edges,~,emb,~,~,~,~] = build(pathData);
+        else
+            try
+                load(matPath,"nodes","edges","emb");
+            catch
+                [nodes,edges,~,emb,~,~,~,~] = build(pathData);
+            end
         end
         ctitle = "embedding";
     else
-        try
-            load(matPath,"nodes","edges");
-            emb = nodes(:,2:3);
-        catch
+        if rereadData
             [nodes,edges,~,~,~,~,~,~] = build(pathData);
-            emb = nodes(:,2:3);
+        else
+            try
+                load(matPath,"nodes","edges");
+            catch
+                [nodes,edges,~,~,~,~,~,~] = build(pathData);
+            end
         end
+        emb = nodes(:,2:3);
         ctitle = "given";
     end
     
