@@ -32,7 +32,7 @@ function plotData(pathData,rereadData,drawEmbedding,drawOV,drawNodes,drawLabel,d
     hold on
     if drawOV
         title(ctitle);
-        subtitle(append("OV: ",string(ObjF(emb,edges))),'FontWeight',"normal");
+        subtitle(append("OV: ",string(ObjF(emb,edges)),newline,"nOV: ",string(ObjFN(emb,edges))),'FontWeight',"normal");
     end
     
     % draw the nodes
@@ -92,7 +92,8 @@ function plotData(pathData,rereadData,drawEmbedding,drawOV,drawNodes,drawLabel,d
                 y2 = y + dist*sin(angle);
 
                 % draw the edges from nodes in angles
-                line([x,x2],[y,y2])
+%                 line([x,x2],[y,y2])
+                quiver(x,y,x2-x,y2-y,0) % ,"Color",[0, 0.4470, 0.7410])
             end
 
             % draw a line from the end of each edge to 

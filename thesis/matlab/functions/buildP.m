@@ -9,7 +9,7 @@ function [P,timeP] = buildP(n,Cos,Sin)
     y = reshape(t_Sin,[],1);
     P = [x,y];
     % remove same index (p_ii)
-    P(1:n-1:n*(n-1),:) = [];
+    P(1:n+1:n^2,:) = [];
     
     timeP = toc;
     toc

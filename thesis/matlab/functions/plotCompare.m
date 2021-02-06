@@ -1,5 +1,8 @@
 % creates a tiled layout and plots initial and final embedding with OVs
-function plotCompare(pathData,rereadData,savePlot)
+function plotCompare(pathData,dataOptions)
+    rereadData = dataOptions(1);
+    savePlot = dataOptions(2);
+    
     t = tiledlayout(1,2);
     t.Title.String = pathData;
     t.Title.FontWeight = 'bold';

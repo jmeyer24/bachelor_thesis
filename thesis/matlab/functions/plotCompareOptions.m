@@ -1,5 +1,8 @@
 % creates a tiled layout and plots initial and final embedding with OVs
-function plotCompareOptions(pathData,rereadData,drawOV,drawNodes,drawLabel,drawNorth,drawConnections,drawNormalized,drawDifference,drawEndLabel,savePlot)
+function plotCompareOptions(pathData,drawOV,drawNodes,drawLabel,drawNorth,drawConnections,drawNormalized,drawDifference,drawEndLabel,dataOptions)
+    rereadData = dataOptions(1);
+    savePlot = dataOptions(2);
+    
     t = tiledlayout(1,2);
     t.Title.String = pathData;
     t.Title.FontWeight = 'bold';
@@ -12,7 +15,6 @@ function plotCompareOptions(pathData,rereadData,drawOV,drawNodes,drawLabel,drawN
     plotData(pathData,0,1,drawOV,drawNodes,drawLabel,drawNorth,drawConnections,drawNormalized,drawDifference,drawEndLabel)
     
     figure
-    drawOV
     
     if savePlot
         exportgraphics(t,append("plots\",pathData,"_option.png"),"Resolution",300);

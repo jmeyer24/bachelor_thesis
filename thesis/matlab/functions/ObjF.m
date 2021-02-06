@@ -4,11 +4,11 @@ function cof = ObjF(emb,edges)
 
     for row = 1:size(edges,1)
         edge = edges(row,:);
-        from_ind = edge(2);
-        to_ind = edge(3);
+        from = edge(2);
+        to = edge(3);
         angle = edge(5);
 
-        x_diff = emb(to_ind,:)-emb(from_ind,:);
+        x_diff = emb(to,:)-emb(from,:);
         x_unitvec = [cos(angle) sin(angle)];
 
         vec_ij = x_diff - x_unitvec;
