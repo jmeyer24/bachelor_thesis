@@ -1,6 +1,6 @@
 % calculates the Objective Function with normalization of the difference
-function cof = ObjFN(emb,edges)
-    cof = 0;
+function ov = ObjFN(emb,edges)
+    ov = 0;
 
     for row = 1:size(edges,1)
         edge = edges(row,:);
@@ -14,7 +14,7 @@ function cof = ObjFN(emb,edges)
         vec_ij = x_diff - x_unitvec;
         z = sum(vec_ij.*vec_ij);
 
-        cof = cof + z;
+        ov = ov + z;
     end
 end
 

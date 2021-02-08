@@ -39,15 +39,17 @@ function [nodes,edges,n,emb,M,P,Sin,Cos] = build(pathData)
 % %         P(1:n:end,:) = [];
     end
     
-    full(P)
-    full(M)
+    % print when building
+%     full(P)
+%     full(M)
+%     
+%     sizeM = size(M)
+%     sizeP = size(P)
+%     
+%     rankMM = rank(full(M'*M))
+%     rankMP = rank(full(M'*P))
+    %
     
-    sizeM = size(M)
-    sizeP = size(P)
-    
-    rankMM = rank(full(M'*M))
-    rankMP = rank(full(M'*P))
-
 %     this one is not encouraged by matlab
 %     emb = inv(M'*M)*(M'*P);   
 %     this is maybe necessary to keep the matrices in lower dimensions

@@ -32,7 +32,10 @@ function plotData(pathData,rereadData,drawEmbedding,drawOV,drawNodes,drawLabel,d
     hold on
     if drawOV
         title(ctitle);
-        subtitle(append("OV: ",string(ObjF(emb,edges)),newline,"nOV: ",string(ObjFN(emb,edges))),'FontWeight',"normal");
+        % print the objective function values for normalized and
+        % non-normalized
+%         subtitle(append("OV: ",string(ObjF(emb,edges)),newline,"nOV: ",string(ObjFN(emb,edges))),'FontWeight',"normal");
+        subtitle(append("OV: ",string(ObjF(emb,edges)),newline,"nOV: ",string(restrictedObjFN(emb,edges))),'FontWeight',"normal");
     end
     
     % draw the nodes
